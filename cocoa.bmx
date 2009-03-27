@@ -50,7 +50,7 @@ Function methodImpSel@ Ptr(obj@ Ptr, name$, sel@ Ptr Var)
 End Function
 
 Global ns_alloc_sel@ Ptr = sel_registerName("alloc")
-Global ns_allocWithZone_sel@ Ptr = sel_registerName("allocWithZone")
+Global ns_allocWithZone_sel@ Ptr = sel_registerName("allocWithZone:")
 Global ns_init_sel@ Ptr = sel_registerName("init")
 Global ns_retain_sel@ Ptr = sel_registerName("retain")
 Global ns_release_sel@ Ptr = sel_registerName("release")
