@@ -206,6 +206,10 @@ Type NSString Extends NSObject
 		Return nss
 	End Function
 	
+	Function class@ Ptr()
+		Return nsstring_class
+	End Function
+	
 	Function fromBBString:NSString(str$)
 		Local sel@ Ptr = sel_registerName("stringWithCharacters:length:")
 		Local strbuf@ Ptr
