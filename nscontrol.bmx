@@ -21,26 +21,23 @@ Rem:license
 	distribution.
 EndRem
 
-Strict
-
-Module Pub.Cocoa
-
-ModuleInfo "Version: 1.00"
-ModuleInfo "Author: Noel Cower"
-ModuleInfo "License: zlib/libpng License"
-ModuleInfo "Copyright: Noel Cower"
-ModuleInfo "LD_OPTS:-framework Cocoa"
-
-Import Pub.ObjectiveC
-
-' Common
-Include "common.bmx"
-
-' Classes
-Include "nsobject.bmx"
-Include "nsstring.bmx"
-Include "nscontrol.bmx"
-Include "nsview.bmx"
-
-' Structs
-Include "nsrect.bmx"
+Rem
+' http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSControl_Class/Reference/Reference.html
+Type NSControl Extends NSObject
+	Global nscontrol_class@ Ptr
+	Global nscontrol_init@ Ptr(t@ Ptr, s@ Ptr), nscontrol_init_sel@ Ptr
+	
+	Method New()
+	End Method
+	
+	Method Delete()
+	End Method
+	
+	Function Alloc:NSControl()
+	End Function
+	
+	Method Init:NSControl()
+		Return NSControl(Super.init())
+	End Method
+End Type
+EndRem

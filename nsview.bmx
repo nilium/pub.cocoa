@@ -21,26 +21,30 @@ Rem:license
 	distribution.
 EndRem
 
-Strict
-
-Module Pub.Cocoa
-
-ModuleInfo "Version: 1.00"
-ModuleInfo "Author: Noel Cower"
-ModuleInfo "License: zlib/libpng License"
-ModuleInfo "Copyright: Noel Cower"
-ModuleInfo "LD_OPTS:-framework Cocoa"
-
-Import Pub.ObjectiveC
-
-' Common
-Include "common.bmx"
-
-' Classes
-Include "nsobject.bmx"
-Include "nsstring.bmx"
-Include "nscontrol.bmx"
-Include "nsview.bmx"
-
-' Structs
-Include "nsrect.bmx"
+Rem
+' http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSView_Class/Reference/NSView.html
+Type NSView Extends NSObject
+	Global nsview_class@ Ptr
+	Global nsview_initWithFrame@ Ptr(t@ Ptr, s@ Ptr, f@ Ptr), nsview_initWithFrame_sel@ Ptr
+	
+	Function alloc:NSView()
+		nsview_alloc(nsview_class, nsview_alloc_sel)
+	End Function
+	
+	Method init:NSView()
+		_obj = nsview_init(_obj, nsview_init_sel)
+		If _obj = Null Then
+			Return Null
+		EndIf
+		Return Self
+	End Method
+	
+	Method initWithFrame:NSView( frame:NSRect )
+		_obj = nsview_initWithFrame(_obj, nsview_initWithFrame_sel, frame)
+		If _obj = Null Then
+			Return Null
+		EndIf
+		Return Self
+	End Method
+End Type
+EndRem

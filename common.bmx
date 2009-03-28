@@ -21,26 +21,14 @@ Rem:license
 	distribution.
 EndRem
 
-Strict
+Global g_ns_alloc_sel@ Ptr = sel_registerName("alloc")
+Global g_ns_allocWithZone_sel@ Ptr = sel_registerName("allocWithZone:")
+Global g_ns_init_sel@ Ptr = sel_registerName("init")
+Global g_ns_retain_sel@ Ptr = sel_registerName("retain")
+Global g_ns_release_sel@ Ptr = sel_registerName("release")
 
-Module Pub.Cocoa
-
-ModuleInfo "Version: 1.00"
-ModuleInfo "Author: Noel Cower"
-ModuleInfo "License: zlib/libpng License"
-ModuleInfo "Copyright: Noel Cower"
-ModuleInfo "LD_OPTS:-framework Cocoa"
-
-Import Pub.ObjectiveC
-
-' Common
-Include "common.bmx"
-
-' Classes
-Include "nsobject.bmx"
-Include "nsstring.bmx"
-Include "nscontrol.bmx"
-Include "nsview.bmx"
-
-' Structs
-Include "nsrect.bmx"
+Function cocoa_MethodImpSel@ Ptr(obj@ Ptr, name$, sel@ Ptr Var)
+	Local class@ Ptr = object_getClass(obj)
+	sel = sel_registerName(name)
+	Return class_getMethodImplementation(class, sel)
+End Function
