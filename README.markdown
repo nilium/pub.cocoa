@@ -6,6 +6,8 @@ This is a module for BlitzMax that wraps the Cocoa classes.  There is a heavy de
 
 The goal of this module is to implement a wrapper that provides proper interop between Cocoa's classes/Objective-C 2.0 and BlitzMax, such that objects between the two are almost interchangeable.  I don't expect to make this flawless, but I would like to be able, at the least, to write classes in BlitzMax that can extend the existing Cocoa classes.  Most of this will likely be done through BlitzMax's reflection module.
 
+You should install the module in pub.mod/cocoa.mod (e.g., BlitzMax/mod/pub.mod/cocoa.mod).  Anywhere else and you will have to modify the code, possibly including changing how the framework is linked if you decide to forego using it as a module and simply import the source code itself.
+
 ### License
 
 The module is licensed under the zlib/libpng license.
