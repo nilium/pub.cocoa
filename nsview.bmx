@@ -25,7 +25,7 @@ Rem
 ' http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSView_Class/Reference/NSView.html
 Type NSView Extends NSObject
 	Global nsview_class@ Ptr
-	Global nsview_initWithFrame@ Ptr(t@ Ptr, s@ Ptr, f@ Ptr), nsview_initWithFrame_sel@ Ptr
+	Global nsview_initWithFrame@ Ptr(t@ Ptr, s@ Ptr, x#, y#, width#, height#), nsview_initWithFrame_sel@ Ptr
 	
 	Function alloc:NSView()
 		nsview_alloc(nsview_class, nsview_alloc_sel)
@@ -40,7 +40,7 @@ Type NSView Extends NSObject
 	End Method
 	
 	Method initWithFrame:NSView( frame:NSRect )
-		_obj = nsview_initWithFrame(_obj, nsview_initWithFrame_sel, frame)
+		_obj = nsview_initWithFrame(_obj, nsview_initWithFrame_sel, frame.x, frame.y, frame.width, frame.height)
 		If _obj = Null Then
 			Return Null
 		EndIf
