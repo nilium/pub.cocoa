@@ -29,6 +29,9 @@ ModuleInfo "Version: 1.00"
 ModuleInfo "Author: Noel Cower"
 ModuleInfo "License: zlib/libpng License"
 ModuleInfo "Copyright: Noel Cower"
+
+?MacOS
+
 ModuleInfo "LD_OPTS:-framework Cocoa"
 
 Import Pub.ObjectiveC
@@ -44,3 +47,5 @@ Include "nsview.bmx"
 
 ' Structs
 Include "nsrect.bmx"
+
+?
